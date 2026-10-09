@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La résidence — Résidence Monique</title>
+  <meta name="description" content="Le jardin, la plage privée et le restaurant face à la mer de la Résidence Monique, à Agniribe sur l'Île aux Nattes.">
+  <meta name="theme-color" content="#0a1a1a">
+  <!-- Maquette : à retirer à la mise en ligne sur le domaine définitif. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Résidence Monique">
+  <meta property="og:title" content="La résidence — Résidence Monique">
+  <meta property="og:description" content="Le jardin, la plage privée et le restaurant face à la mer de la Résidence Monique, à Agniribe sur l'Île aux Nattes.">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La résidence — Résidence Monique">
+  <meta name="twitter:description" content="Le jardin, la plage privée et le restaurant face à la mer de la Résidence Monique, à Agniribe sur l'Île aux Nattes.">
+
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Polices hébergées dans le dossier : aucune dépendance extérieure. -->
+  <link rel="preload" href="./fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./css/fonts.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/sections.css">
+  <link rel="stylesheet" href="./css/complements.css">
+
+  <!-- Avant les images : repère les photos absentes (fond de repli). -->
+  <script src="./js/images.js"></script>
+</head>
+<body data-page="la-residence">
+
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- Barre de navigation en trois colonnes, disposition courante des
+       sites hôteliers : nom de l'établissement au centre, liens répartis
+       de part et d'autre (le nom est long : tous les liens d'un même côté
+       le chevaucheraient), réservation à droite. -->
+  <nav class="nav nav--solid" data-nav aria-label="Navigation principale">
+    <div class="nav__inner container">
+
+      <div class="nav__side nav__side--left">
+        <button class="nav__burger" data-burger type="button"
+                aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links"><li><a href="./index.html">Accueil</a></li><li><a href="./hebergements.html">Hébergements</a></li><li><a class="is-current" href="./la-residence.html" aria-current="page">La résidence</a></li></ul>
+      </div>
+
+      <a class="nav__brand" href="./index.html">
+        <span class="nav__brand-name">Résidence Monique</span>
+        <span class="nav__brand-sub">ÎLE AUX NATTES · MADAGASCAR</span>
+      </a>
+
+      <div class="nav__side nav__side--right">
+        <ul class="nav__links"><li><a href="./activites.html">Activités</a></li><li><a href="./acces.html">Accès</a></li></ul>
+        <a class="nav__cta" href="./acces.html#contact" data-reserver>Réserver</a>
+      </div>
+
+    </div>
+    <div class="nav__drawer" data-drawer id="nav-drawer">
+      <ul><li><a href="./index.html">Accueil</a></li><li><a href="./hebergements.html">Hébergements</a></li><li><a class="is-current" href="./la-residence.html" aria-current="page">La résidence</a></li><li><a href="./activites.html">Activités</a></li><li><a href="./acces.html">Accès</a></li></ul>
+      <a class="nav__drawer-cta" href="./acces.html#contact" data-reserver>Réserver</a>
+    </div>
+  </nav>
+
+  <main id="contenu">
+
+  <header class="pagehead section" data-section="pagehead">
+    <div class="container">
+      <p class="kicker">Bienvenue</p>
+      <h1 class="pagehead__title">La résidence</h1>
+      <p class="pagehead__intro">Trois bungalows dans un jardin qui s'ouvre sur une plage privée, à Agniribe, sur l'Île aux Nattes. Ici, on vient pour le calme : des chaises longues, des parasols, et la mer devant chaque terrasse.</p>
+    </div>
+  </header>
+
+  <section class="maison-partie section" id="residence" aria-labelledby="residence-titre">
+    <div class="container">
+      <h2 class="maison-partie__title" id="residence-titre">Le jardin et la plage</h2>
+      <p class="maison-partie__text">Entre le jardin, la terrasse et la plage privée, avec ses chaises longues et ses parasols, chacun trouve son coin au calme. On s'y baigne toute l'année, dans une eau à 27°.</p>
+      <ul class="galerie" style="--cols:3"><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="0" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Bungalow de la Résidence Monique au toit de palme tressée, entouré de pelouse et de cocotiers"><img class="galerie__img" src="./images/bungalow.jpg" alt="Bungalow de la Résidence Monique au toit de palme tressée, entouré de pelouse et de cocotiers" width="720" height="540" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="1" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Allée de sable entre la pelouse et les palmiers, menant aux bungalows au toit de palme"><img class="galerie__img" src="./images/jardin-bungalows.jpg" alt="Allée de sable entre la pelouse et les palmiers, menant aux bungalows au toit de palme" width="1024" height="768" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="2" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Vue depuis une terrasse sur le jardin, les chaises longues, un parasol et la mer"><img class="galerie__img" src="./images/vue-terrasse.jpg" alt="Vue depuis une terrasse sur le jardin, les chaises longues, un parasol et la mer" width="720" height="540" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="3" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Plage de sable blanc sous les cocotiers, chaise longue en bois face à la mer turquoise"><img class="galerie__img" src="./images/plage.jpg" alt="Plage de sable blanc sous les cocotiers, chaise longue en bois face à la mer turquoise" width="757" height="568" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="4" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Cocotiers penchés sur la plage de sable, un bateau au bord de l'eau turquoise"><img class="galerie__img" src="./images/plage-cocotiers.jpg" alt="Cocotiers penchés sur la plage de sable, un bateau au bord de l'eau turquoise" width="715" height="536" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="residence" data-lb-open="residence" data-lb-index="5" data-lb-title="Le jardin et la plage" data-media aria-label="Agrandir la photo : Coucher de soleil sur la mer, vu depuis le jardin entre les pandanus"><img class="galerie__img" src="./images/coucher-soleil.jpg" alt="Coucher de soleil sur la mer, vu depuis le jardin entre les pandanus" width="500" height="375" loading="lazy" decoding="async"></button></li></ul>
+    </div>
+  </section>
+
+  <section class="maison-partie maison-partie--table section" id="restaurant" aria-labelledby="restaurant-titre">
+    <div class="container">
+      <p class="kicker">Restaurant</p>
+      <h2 class="maison-partie__title" id="restaurant-titre">Le restaurant face à la mer</h2>
+      <p class="maison-partie__text">Petit-déjeuner, déjeuner et dîner sont servis face à la mer. Cuisine africaine, cuisine française et pizzas, avec des menus enfants, des régimes spéciaux sur demande et des paniers-repas pour les journées d'excursion. Le petit-déjeuner, à 5 €, peut aussi être servi en chambre.</p>
+      <ul class="galerie" style="--cols:4"><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="restaurant" data-lb-open="restaurant" data-lb-index="0" data-lb-title="Le restaurant" data-media aria-label="Agrandir la photo : Le restaurant de la Résidence Monique, face à la mer"><img class="galerie__img" src="./images/restaurant.jpg" alt="Le restaurant de la Résidence Monique, face à la mer" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="restaurant" data-lb-open="restaurant" data-lb-index="1" data-lb-title="Le restaurant" data-media aria-label="Agrandir la photo : Une table dressée au restaurant, face à la mer"><img class="galerie__img" src="./images/restaurant-table.jpg" alt="Une table dressée au restaurant, face à la mer" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="restaurant" data-lb-open="restaurant" data-lb-index="2" data-lb-title="Le restaurant" data-media aria-label="Agrandir la photo : Un plat servi au restaurant de la résidence"><img class="galerie__img" src="./images/restaurant-plat.jpg" alt="Un plat servi au restaurant de la résidence" loading="lazy" decoding="async"></button></li><li class="galerie__item"><button type="button" class="galerie__btn fallback--sand" data-lb-item="restaurant" data-lb-open="restaurant" data-lb-index="3" data-lb-title="Le restaurant" data-media aria-label="Agrandir la photo : Le petit-déjeuner servi face à la mer"><img class="galerie__img" src="./images/petit-dejeuner.jpg" alt="Le petit-déjeuner servi face à la mer" loading="lazy" decoding="async"></button></li></ul>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer" data-section="footer">
+    <div class="container">
+      <div class="footer__cta-block fallback--deep" data-media>
+        <img class="media-fill" src="./images/plage.jpg" alt="Plage de sable blanc sous les cocotiers, chaise longue en bois face à la mer turquoise" width="757" height="568" loading="lazy" decoding="async">
+        <h2 class="footer__cta-title">La plage privée
+vous attend</h2>
+        <a class="btn btn--accent btn--pill footer__cta-btn" href="./acces.html#contact" data-reserver>Réserver</a>
+      </div>
+      <div class="footer__meta">
+        <div class="footer__address">
+          <div class="footer__brand-name">Résidence Monique</div>
+          <p>Agniribe</p>
+          <p>Île aux Nattes</p>
+          <p>515 Sainte-Marie</p>
+          <p>Madagascar</p>
+          <a data-contact="email" data-contact-row="email" hidden></a>
+          <a data-contact="telephone" data-contact-row="telephone" hidden></a>
+        </div>
+        <div class="footer__social" data-social-block hidden>
+          <h3>Suivez-nous</h3>
+          <ul data-social-list></ul>
+        </div>
+        <div class="footer__legal">
+          <h3>Informations</h3>
+          <ul>
+            <li><span>Arrivée : 7h00 – 19h00</span></li>
+            <li><span>Départ : 10h30 – 11h00</span></li>
+            <li><span>Paiement en espèces uniquement</span></li>
+            <li><span>Établissement non-fumeurs</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__wordmark-wrap">
+        <span class="footer__wordmark" aria-hidden="true">Monique</span>
+      </div>
+      <p class="footer__copyright">© 2026 Résidence Monique. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Appel et WhatsApp, sur mobile uniquement. Rempli par js/contact.js
+       depuis js/config.js : sans numéro renseigné, rien ne s'affiche. -->
+  <div class="joindre" data-joindre hidden></div>
+
+  <!-- Bibliothèques hébergées dans le dossier (mêmes versions que l'original). -->
+  <script defer src="./js/vendor/gsap.min.js"></script>
+  <script defer src="./js/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="./js/vendor/lenis.min.js"></script>
+
+  <!-- Coordonnées à compléter : js/config.js -->
+  <script defer src="./js/config.js"></script>
+  <script defer src="./js/contact.js"></script>
+  <script defer src="./js/rooms.js"></script>
+  <script defer src="./js/carousel.js"></script>
+  <script defer src="./js/faq.js"></script>
+  <script defer src="./js/lightbox.js"></script>
+  <script defer src="./js/photo-carousel.js"></script>
+  <script defer src="./js/animations.js"></script>
+  <script defer src="./js/main.js"></script>
+</body>
+</html>

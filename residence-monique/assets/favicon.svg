@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Résidence Monique">
+  <rect width="64" height="64" rx="14" fill="#0d1e1c"/>
+  <!-- Soleil qui se couche sur l'horizon -->
+  <clipPath id="ciel"><rect width="64" height="38"/></clipPath>
+  <circle cx="32" cy="38" r="15" fill="#f0ece5" clip-path="url(#ciel)"/>
+  <line x1="8" y1="38" x2="56" y2="38" stroke="#f0ece5" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- La mer -->
+  <path d="M12 47c5-3.5 10-3.5 15 0s10 3.5 15 0 7-3 10-1" fill="none" stroke="#2b8a84" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M18 55c4.5-3 9-3 13.5 0s9 3 13.5 0" fill="none" stroke="#2b8a84" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>

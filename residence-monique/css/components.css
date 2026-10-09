@@ -1,0 +1,1100 @@
+/* ══════════════════════════════════════════════════
+   COMPONENTS — nav, boutons, cards, carousel, FAQ
+   ══════════════════════════════════════════════════ */
+
+/* ── Word reveal (hero headline) ────────────────── */
+.word-wrap  { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.word-inner { display: inline-block; }
+
+/* ── Boutons ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--r-pill);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0);    }
+
+.btn--accent         { background: var(--c-accent); color: #fff; }
+.btn--accent:hover   { background: var(--c-accent-2); }
+
+.btn--outline        { border: 1.5px solid var(--c-ink); color: var(--c-ink); background: transparent; }
+.btn--outline:hover  { background: var(--c-ink); color: #fff; }
+
+.btn--outline-light        { border: 1.5px solid rgba(255,255,255,.4); color: #fff; background: transparent; }
+.btn--outline-light:hover  { background: rgba(255,255,255,.15); }
+
+/* ── Nav ─────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  padding-block: 14px;
+  transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+.nav.is-solid {
+  background: var(--c-surface);
+  box-shadow: 0 1px 0 var(--c-line);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  flex-shrink: 0;
+  transition: color 0.3s;
+}
+.nav.is-solid .nav__logo,
+.nav--solid .nav__logo { color: var(--c-ink); }
+
+.nav__links {
+  display: flex;
+  gap: 4px;
+  margin-inline: auto;
+}
+.nav__links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,.8);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  transition: color 0.2s, background 0.2s;
+}
+.nav__links a:hover { color: #fff; background: rgba(255,255,255,.1); }
+.nav.is-solid .nav__links a,
+.nav--solid .nav__links a { color: var(--c-ink); }
+.nav.is-solid .nav__links a:hover,
+.nav--solid .nav__links a:hover { background: var(--c-line); }
+
+.nav__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.nav__cta     { padding: 10px 20px; font-size: 13px; }
+
+/* Burger */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  padding: 2px 0;
+}
+.nav__burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: background 0.3s, transform 0.3s, opacity 0.3s;
+}
+.nav.is-solid .nav__burger span,
+.nav--solid .nav__burger span { background: var(--c-ink); }
+.nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Drawer mobile */
+.nav__drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-line);
+}
+.nav__drawer.is-open { max-height: 320px; }
+.nav__drawer ul      { padding: 12px var(--gap) 20px; display: flex; flex-direction: column; gap: 2px; }
+.nav__drawer a       { display: block; padding: 10px 14px; font-weight: 500; color: var(--c-ink); border-radius: 8px; font-size: 15px; }
+.nav__drawer a:hover { background: var(--c-line); }
+
+/* ── Cards ───────────────────────────────────────── */
+.card {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  position: relative;
+  background: var(--c-line);
+}
+.card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.card:hover .card__bg { transform: scale(1.04); }
+.card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.15) 45%, transparent 100%);
+  pointer-events: none;
+}
+.card__body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 22px;
+  color: #fff;
+  z-index: 1;
+}
+.card__name {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 2vw, 21px);
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.card__meta { font-size: 12px; opacity: 0.8; font-weight: 500; }
+
+/* Carousel card + tag */
+.ideal-card          { border-radius: var(--r-card); overflow: hidden; position: relative; flex-shrink: 0; cursor: grab; }
+.ideal-card:active   { cursor: grabbing; }
+.ideal-card__bg      { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block; }
+.ideal-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 55%, transparent 100%); }
+.ideal-card__tag     {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--r-pill);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+}
+.ideal-card__body    { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px; color: #fff; z-index: 1; }
+.ideal-card__name    { font-family: var(--font-display); font-size: clamp(14px, 1.8vw, 18px); font-weight: 700; margin-bottom: 4px; }
+.ideal-card__loc     { font-size: 12px; opacity: 0.75; display: flex; align-items: center; gap: 4px; }
+
+/* Overlay dégradé bas sur les float-cards (lisibilité du label) */
+.float-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 55%);
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Label des float-cards */
+.float-card__label {
+  position: absolute;
+  bottom: 10px; left: 12px;
+  font-size: 11px; font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
+  z-index: 1;
+}
+
+/* ── Carousel ────────────────────────────────────── */
+.carousel__arrows { display: flex; gap: 8px; }
+.carousel-arrow {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-line);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c-surface);
+  color: var(--c-muted);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.carousel-arrow:hover,
+.carousel-arrow.is-active { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
+.carousel-arrow svg { width: 18px; height: 18px; }
+
+.carousel__viewport { overflow: hidden; border-radius: var(--r-card); }
+.carousel__track    { display: flex; gap: 16px; width: max-content; will-change: transform; user-select: none; }
+
+/* ── FAQ accordéon ───────────────────────────────── */
+.faq-item {
+  border-bottom: 1px solid var(--c-line);
+  overflow: hidden;
+}
+.faq-item__trigger {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  width: 100%;
+  padding: 18px 0;
+  text-align: left;
+  cursor: pointer;
+}
+.faq-item__q {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.6vw, 16px);
+  font-weight: 700;
+  color: var(--c-ink);
+  flex: 1;
+  line-height: 1.4;
+}
+.faq-item__icon {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  color: var(--c-muted);
+  transition: transform 0.35s ease, color 0.3s;
+}
+.faq-item.is-open .faq-item__icon { transform: rotate(180deg); color: var(--c-accent); }
+.faq-item__body { overflow: hidden; max-height: 0; }
+.faq-item__a {
+  padding-bottom: 18px;
+  font-size: 14px;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+/* ── Responsive (composants) ─────────────────────── */
+@media (max-width: 767px) {
+  .nav__links { display: none; }
+  .nav__cta   { display: none; }
+  .nav__burger { display: flex; }
+}
+@media (min-width: 768px) {
+  .nav__drawer { display: none !important; }
+}
+
+/* ── <picture> en fond de carte ───────────────────
+   Les classes de fond sont désormais portées par le <picture> ; l'image
+   qu'il contient doit remplir le conteneur. */
+picture.card__bg,
+picture.ideal-card__bg,
+picture.hero__pic {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.media__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero__pic .media__img { transform-origin: center center; }
+
+/* ── Carte chambre : corps enrichi ───────────────── */
+.ideal-card__desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ideal-card__amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.ideal-card__amenities li {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--r-pill);
+  padding: 3px 9px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* Emplacement du tarif — toujours présent, même sans prix connu */
+.ideal-card__price {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ── Ligne de service (icône + libellé + supplément) ── */
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--c-ink);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.service-item svg {
+  width: 18px; height: 18px;
+  color: var(--c-accent);
+  flex-shrink: 0;
+}
+.service-item__label { flex: 1; }
+.service-item__badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--c-muted);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-pill);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* ── Carte activité ──────────────────────────────── */
+.activite-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-line);
+  border-radius: var(--r-card);
+  padding: 16px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.activite-card:hover { border-color: var(--c-accent); transform: translateY(-2px); }
+.activite-card svg   { width: 20px; height: 20px; color: var(--c-accent); flex-shrink: 0; }
+
+/* Repli sans GSAP : si le CDN est bloque, l'accordeon s'anime en CSS pur.
+   La classe .no-gsap est posee par js/main.js. */
+.no-gsap .faq-item__body { transition: max-height .35s ease; }
+.no-gsap .faq-item__icon { transition: transform .25s ease; }
+
+/* ══════════════════════════════════════════════════
+   VISIONNEUSE DE PHOTOS (chambres)
+   ══════════════════════════════════════════════════ */
+
+/* Bouton d ouverture, dans le corps de la carte */
+.ideal-card__open {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  min-height: 36px;
+  transition: background .2s, border-color .2s;
+}
+.ideal-card__open:hover { background: rgba(255,255,255,.3); }
+.ideal-card__open svg   { width: 14px; height: 14px; }
+
+/* Fenetre */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+  background: rgba(6, 14, 14, .92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.lightbox__frame {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lightbox__title {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 3vw, 24px);
+  font-weight: 700;
+  color: #fff;
+  padding-right: 52px;   /* place pour le bouton de fermeture */
+  margin: 0;
+}
+.lightbox__close {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #fff;
+  transition: background .2s;
+}
+.lightbox__close:hover { background: rgba(255,255,255,.26); }
+.lightbox__close svg   { width: 19px; height: 19px; }
+
+.lightbox__stage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lightbox__holder {
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+}
+.lightbox__pic,
+.lightbox__pic img {
+  display: block;
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+}
+.lightbox__nav {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #fff;
+  transition: background .2s;
+}
+.lightbox__nav:hover { background: rgba(255,255,255,.26); }
+.lightbox__nav svg   { width: 22px; height: 22px; }
+
+.lightbox__count {
+  text-align: center;
+  color: rgba(255,255,255,.7);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  margin: 0;
+}
+
+/* Sur telephone, les fleches passent sous la photo : elles ne mangent plus
+   la largeur utile, et restent atteignables au pouce. */
+@media (max-width: 639px) {
+  .lightbox__stage  { flex-wrap: wrap; justify-content: center; }
+  .lightbox__holder { flex: 0 0 100%; order: -1; }
+  .lightbox__nav    { width: 52px; height: 52px; }
+  .lightbox__pic,
+  .lightbox__pic img { max-height: 58vh; }
+}
+
+/* Carte chambre sur petit ecran : la description se limite a deux lignes,
+   pour que le tarif et le bouton restent visibles sans deborder de la carte. */
+@media (max-width: 480px) {
+  .ideal-card__desc {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  .ideal-card__body { padding: 16px 15px; }
+}
+
+/* Le lien vers la fiche de chambre remplace l ancien bouton de galerie. */
+a.ideal-card__open { text-decoration: none; }
+
+/* ── Selecteur de langue ─────────────────────────── */
+.langsel {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: var(--c-bg);
+  border: 1.5px solid var(--c-line);
+}
+.langsel__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 30px;
+  padding: 0 7px;
+  border-radius: var(--r-pill);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--c-muted);
+  transition: background .15s, color .15s;
+}
+.langsel__item:hover { color: var(--c-ink); background: var(--c-surface); }
+.langsel__item.is-active { background: var(--c-accent); color: #fff; }
+
+/* Sur la page d accueil, la barre est transparente au-dessus du hero :
+   le selecteur doit rester lisible sur la photo. */
+.nav:not(.nav--solid):not(.is-solid) .langsel {
+  background: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.26);
+}
+.nav:not(.nav--solid):not(.is-solid) .langsel__item { color: rgba(255,255,255,.82); }
+.nav:not(.nav--solid):not(.is-solid) .langsel__item:hover { color: #fff; background: rgba(255,255,255,.2); }
+
+@media (max-width: 860px) {
+  /* Les libelles longs du menu ne tiennent plus a cote du selecteur :
+     on masque le bouton d appel a l action, deja present dans le tiroir. */
+  .nav__cta { display: none; }
+}
+@media (max-width: 400px) {
+  .langsel__item { min-width: 28px; padding: 0 4px; font-size: 10.5px; }
+}
+
+/* ══════════════════════════════════════════════════
+   CARTES CHAMBRE — lisibilite du texte sur la photo
+   ══════════════════════════════════════════════════ */
+
+/* Le corps de la carte contient desormais le nom, le sous-titre, la
+   description, les equipements, le tarif et un lien : il monte bien plus
+   haut qu avant. L ancien degrade s arretait trop bas et le haut du texte
+   se retrouvait sur la photo nue. On le remonte et on le renforce, en
+   gardant une transition douce pour ne pas noircir toute la carte. */
+.ideal-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.90) 0%,
+    rgba(0,0,0,.82) 30%,
+    rgba(0,0,0,.70) 50%,
+    rgba(0,0,0,.52) 66%,
+    rgba(0,0,0,.24) 82%,
+    transparent 100%
+  );
+}
+
+/* Lueur sombre discrete portee par le texte lui-meme : elle rattrape les
+   photos tres claires, ou le degrade seul ne suffit pas. */
+.ideal-card__body {
+  text-shadow: 0 1px 3px rgba(0,0,0,.55);
+}
+.ideal-card__name {
+  text-shadow: 0 1px 4px rgba(0,0,0,.7);
+}
+.ideal-card__loc,
+.ideal-card__desc {
+  /* Ces deux lignes sont attenuees par leur opacite : on compense. */
+  opacity: .92;
+  text-shadow: 0 1px 3px rgba(0,0,0,.65);
+}
+.ideal-card__price {
+  text-shadow: 0 1px 4px rgba(0,0,0,.7);
+}
+
+/* L etiquette en haut de carte est seule sur la photo, sans degrade. */
+.ideal-card__tag {
+  background: rgba(0,0,0,.42);
+  border-color: rgba(255,255,255,.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+/* ══════════════════════════════════════════════════
+   FLECHES DE DEFILEMENT posees sur le carrousel
+   ══════════════════════════════════════════════════ */
+
+.carousel__stage {
+  position: relative;
+}
+
+.carousel-float {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-line);
+  color: var(--c-ink);
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  transition: background .2s, color .2s, opacity .2s, transform .2s;
+}
+.carousel-float--prev { left: -12px; }
+.carousel-float--next { right: -12px; }
+
+.carousel-float svg { width: 24px; height: 24px; }
+
+.carousel-float:hover:not(:disabled) {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+
+/* Bout de course : la fleche s efface au lieu de disparaitre, pour que le
+   visiteur comprenne qu il est arrive au bout et non que le bouton a bougé. */
+.carousel-float:disabled {
+  opacity: .32;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* La fleche « suivant » attire discretement l oeil tant qu il reste des
+   chambres a decouvrir. Respecte prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-float--next.is-active {
+    animation: fleche-invite 2.6s ease-in-out 1.2s 3;
+  }
+}
+@keyframes fleche-invite {
+  0%, 100%   { transform: translateY(-50%) translateX(0); }
+  45%        { transform: translateY(-50%) translateX(5px); }
+  70%        { transform: translateY(-50%) translateX(0); }
+}
+
+/* Les cartes ne doivent pas passer sous les fleches. */
+.carousel__stage .carousel__viewport {
+  /* Le debordement reste masque : on ajoute juste la place des fleches. */
+  margin-inline: 0;
+}
+
+@media (max-width: 1279px) {
+  /* Plus de place hors du conteneur : on ramene les fleches a l interieur. */
+  .carousel-float--prev { left: 8px; }
+  .carousel-float--next { right: 8px; }
+}
+
+@media (max-width: 639px) {
+  .carousel-float {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .carousel-float svg { width: 21px; height: 21px; }
+  .carousel-float--prev { left: 4px; }
+  .carousel-float--next { right: 4px; }
+
+  /* Sur telephone, les fleches de l en-tete font doublon avec celles
+     posees sur le carrousel : on ne garde que ces dernieres, plus
+     grandes et mieux placees pour le pouce. */
+  .ideal .carousel__arrows { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BARRE DE NAVIGATION
+   Disposition courante des sites hoteliers haut de gamme :
+   liens a gauche, nom de l etablissement au centre, et
+   reservation a droite. Typographie posee, tres espacee,
+   aucune couleur vive, rien d arrondi.
+   ══════════════════════════════════════════════════════════ */
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  padding-block: 0;
+  transition: background .4s ease, box-shadow .4s ease,
+              border-color .4s ease, backdrop-filter .4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+/* Au-dessus du hero : transparente, avec un voile sombre qui garantit la
+   lisibilite quelle que soit la photo. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Le hero applique deja 58 % de voile en haut. Celui-ci n ajoute qu une
+     marge de securite, pour que la barre reste lisible sur une photo
+     plus claire. Cumul : environ 64 %. */
+  background: linear-gradient(to bottom, rgba(0,0,0,.26), rgba(0,0,0,.04));
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+
+/* Au defilement, et sur les pages sans hero : fond clair, filet fin. */
+.nav.is-solid,
+.nav--solid {
+  background: rgba(250, 248, 244, .93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--c-line);
+  box-shadow: none;
+}
+.nav.is-solid::before,
+.nav--solid::before { opacity: 0; }
+
+.nav__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  min-height: var(--nav-h);
+}
+
+.nav__side { display: flex; align-items: center; gap: 22px; min-width: 0; }
+.nav__side--right { justify-content: flex-end; }
+
+/* ── Nom de l etablissement, au centre────────────────────── */
+.nav__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+.nav__brand-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(15px, 1.5vw, 20px);
+  font-weight: 600;
+  letter-spacing: .3em;
+  /* L interlettrage pousse le texte vers la droite : on compense pour
+     que le bloc reste optiquement centre. */
+  text-indent: .3em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  transition: color .4s ease;
+}
+.nav__brand-sub {
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-indent: .24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.78);
+  line-height: 1;
+  transition: color .4s ease;
+}
+.nav.is-solid .nav__brand-name,
+.nav--solid .nav__brand-name { color: var(--c-ink); }
+.nav.is-solid .nav__brand-sub,
+.nav--solid .nav__brand-sub { color: var(--c-muted); }
+
+/* ── Liens ───────────────────────────────────────────────── */
+.nav__links { display: flex; gap: 22px; }
+.nav__links a {
+  position: relative;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  /* Un libellé de deux mots ne doit jamais se couper. */
+  white-space: nowrap;
+  color: rgba(255,255,255,.92);
+  padding: 6px 0;
+  background: none;
+  border-radius: 0;
+  transition: color .25s;
+}
+/* Le soulignement se dessine depuis la gauche, plutot qu un fond colore. */
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.nav__links a:hover::after,
+.nav__links a.is-current::after { transform: scaleX(1); }
+.nav__links a:hover { color: #fff; background: none; }
+
+.nav.is-solid .nav__links a,
+.nav--solid .nav__links a { color: var(--c-ink); background: none; }
+.nav.is-solid .nav__links a:hover,
+.nav--solid .nav__links a:hover { background: none; }
+.nav__links a.is-current { color: #fff; font-weight: 600; }
+.nav.is-solid .nav__links a.is-current,
+.nav--solid .nav__links a.is-current { color: var(--c-accent); }
+
+/* ── Appel a l action ────────────────────────────────────── */
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 20px;
+  border: 1px solid rgba(255,255,255,.62);
+  border-radius: 0;                /* angle droit : code du haut de gamme */
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.nav__cta:hover { background: #fff; color: var(--c-ink); border-color: #fff; }
+
+.nav.is-solid .nav__cta,
+.nav--solid .nav__cta { border-color: var(--c-ink); color: var(--c-ink); }
+.nav.is-solid .nav__cta:hover,
+.nav--solid .nav__cta:hover {
+  background: var(--c-ink);
+  color: var(--c-surface);
+  border-color: var(--c-ink);
+}
+
+/* ── Selecteur de langue, reduit a l essentiel ───────────── */
+.langsel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+.langsel__item {
+  min-width: 0;
+  min-height: 34px;
+  padding: 0 9px;
+  border-radius: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.78);
+  background: none;
+  transition: color .25s;
+}
+.langsel__item:hover { color: #fff; background: none; }
+.langsel__item.is-active { color: #fff; background: none; text-decoration: underline;
+  text-underline-offset: 5px; text-decoration-thickness: 1px; }
+
+/* Filet vertical entre les deux langues */
+.langsel__item + .langsel__item { border-left: 1px solid rgba(255,255,255,.34); }
+
+.nav.is-solid .langsel__item,
+.nav--solid .langsel__item { color: var(--c-muted); }
+.nav.is-solid .langsel__item:hover,
+.nav--solid .langsel__item:hover { color: var(--c-ink); }
+.nav.is-solid .langsel__item.is-active,
+.nav--solid .langsel__item.is-active { color: var(--c-accent); }
+.nav.is-solid .langsel__item + .langsel__item,
+.nav--solid .langsel__item + .langsel__item { border-left-color: var(--c-line); }
+
+/* ── Bouton du menu mobile ───────────────────────────────── */
+.nav__burger { display: none; }
+
+/* ── Tiroir mobile ───────────────────────────────────────── */
+.nav__drawer {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-line);
+}
+.nav__drawer ul { padding: 10px var(--gap) 6px; }
+.nav__drawer a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 14px 4px;
+  border-radius: 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.nav__drawer li:last-child a { border-bottom: none; }
+.nav__drawer a:hover { background: var(--c-bg); }
+
+.nav__drawer-cta {
+  display: block;
+  margin: 4px var(--gap) 20px;
+  padding: 14px;
+  text-align: center;
+  border: 1px solid var(--c-ink);
+  color: var(--c-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.nav__drawer-cta:hover { background: var(--c-ink); color: var(--c-surface); }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════ */
+
+/* Sous 1200 px, les cinq libelles ne tiennent plus a cote du nom centre :
+   on bascule sur le menu au doigt. Mesure faite sur la largeur reelle des
+   textes, pas au juge. */
+@media (max-width: 1199px) {
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+  .nav__cta { display: none; }   /* repris dans le tiroir */
+}
+
+@media (min-width: 1200px) {
+  .nav__drawer { display: none !important; }
+}
+
+@media (max-width: 639px) {
+  .nav__inner { gap: 10px; }
+  .nav__brand-name { font-size: 13px; letter-spacing: .2em; text-indent: .2em; }
+  .nav__brand-sub  { display: none; }
+  .langsel__item   { padding: 0 6px; font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  .nav__brand-name { font-size: 11.5px; letter-spacing: .14em; text-indent: .14em; }
+  .langsel__item   { padding: 0 4px; }
+}
+
+/* ══════════════════════════════════════════════════
+   FORMULAIRE DE DEMANDE — validation et envoi
+   ══════════════════════════════════════════════════ */
+
+/* Piege a robots. Deplace hors de l ecran plutot que display:none :
+   les automates ignorent souvent les champs caches, mais remplissent
+   ceux qui sont simplement invisibles. Aucun lecteur d ecran ne
+   l annonce, il est marque aria-hidden. */
+.booking__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Message d erreur propre a un champ */
+.booking__field-error {
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #8f2018;
+  font-weight: 500;
+}
+
+.booking__field.has-error .booking__input,
+.booking__field.has-error .booking__select,
+.booking__field.has-error .booking__textarea {
+  border-color: #c0392b;
+  background: #fffafa;
+}
+.booking__field.has-error .booking__label { color: #8f2018; }
+
+/* Message global : erreur par defaut, vert quand tout va bien */
+.booking__error--ok {
+  color: #125c47;
+  background: #e6f4ef;
+  border-color: #b6ddd0;
+}
+
+/* Pendant l envoi : le formulaire reste lisible mais ne repond plus */
+.booking__form.is-sending {
+  opacity: .62;
+  pointer-events: none;
+}
+.booking__form.is-sending .booking__submit-row { pointer-events: auto; }
+
+/* Le bouton indique clairement qu il travaille */
+.booking__submit-row .btn:disabled {
+  opacity: .65;
+  cursor: progress;
+}
+
+/* Le bloc de confirmation prend la place du formulaire */
+.booking__success-title:focus-visible {
+  outline: 2.5px solid var(--c-accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ══════════════════════════════════════════════════
+   BOUTON D APPEL FLOTTANT (mobile)
+   ══════════════════════════════════════════════════ */
+
+.joindre {
+  position: fixed;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: none;            /* affiche uniquement sur petit ecran */
+  flex-direction: column;
+  gap: 10px;
+}
+
+.joindre__btn {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(0,0,0,.26);
+  transition: transform .2s ease;
+}
+.joindre__btn svg { width: 26px; height: 26px; }
+
+.joindre__btn--wa  { background: #25d366; }   /* couleur officielle WhatsApp */
+.joindre__btn--tel { background: var(--c-accent); }
+
+@media (hover: hover) {
+  .joindre__btn:hover { transform: scale(1.06); }
+}
+
+/* Sur telephone et petite tablette : la ou l on appelle vraiment. */
+@media (max-width: 899px) {
+  .joindre { display: flex; }
+}
+
+/* Le bouton ne doit pas masquer le pied de page ni la barre
+   d enregistrement : on reserve la place en bas de page. */
+@media (max-width: 899px) {
+  .footer { padding-bottom: 86px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joindre__btn { transition: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CIBLES TACTILES
+   Au doigt, tout ce qui se clique doit faire au moins 44 px.
+   La regle ne s applique qu aux appareils sans survol : a la
+   souris, un bouton de 44 px de haut alourdirait la barre.
+   ══════════════════════════════════════════════════════════ */
+
+@media (hover: none), (max-width: 899px) {
+
+  /* Barre de navigation */
+  .nav__cta       { min-height: 44px; }
+  .langsel__item  { min-height: 44px; min-width: 44px; justify-content: center; }
+  .nav__burger    { min-width: 44px; min-height: 44px; }
+
+  /* Carrousel des chambres */
+  .carousel-float    { width: 46px; height: 46px; }
+  .ideal-card__open  { min-height: 44px; padding: 10px 16px; }
+
+  /* Encart sombre de la section services */
+  .trusted__card-btn { width: 44px; height: 44px; }
+
+  /* En-tete des pages interieures */
+  .pagehead__jump-item { min-height: 44px; }
+
+  /* Visionneuse de photos */
+  .room__zoom     { width: 44px; height: 44px; }
+  .lightbox__nav  { width: 48px; height: 48px; }
+  .lightbox__close{ width: 48px; height: 48px; }
+
+  /* Liens du pied de page et du menu deroulant */
+  .footer__social a,
+  .footer__legal li { min-height: 40px; display: flex; align-items: center; }
+}
+
+/* Le selecteur de langue reste lisible meme resserre : on lui rend sa
+   place plutot que de le comprimer sous la cible tactile. */
+@media (max-width: 360px) {
+  .langsel__item { min-width: 44px; padding: 0 6px; font-size: 11px; }
+}

@@ -1,0 +1,153 @@
+/* ══════════════════════════════════════════════════
+   COMPLEMENTS — fonds de repli des photos, avis des
+   voyageurs, details des fiches. Memes jetons que le
+   reste du site : aucune couleur ni police nouvelle.
+   ══════════════════════════════════════════════════ */
+
+/* L attribut hidden doit l emporter sur le display des composants
+   (lignes de coordonnees, visionneuse, bloc d appel mobile). */
+[hidden] { display: none !important; }
+
+/* ── Fonds de repli ──────────────────────────────────
+   Visibles pendant le chargement d une photo, ou tant qu elle n a pas
+   ete deposee dans images/. Une photo absente est masquee par
+   js/images.js : le degrade prend le relais, sans icone d image cassee. */
+.fallback       { background: linear-gradient(145deg, #0a1a1a 0%, #1d3f3d 100%); }
+.fallback--teal { background: linear-gradient(145deg, #136e6a 0%, #2b8a84 100%); }
+.fallback--deep { background: linear-gradient(145deg, #0d1e1c 0%, #187773 100%); }
+.fallback--sand { background: linear-gradient(145deg, #e4ddd0 0%, #cfc5b2 100%); }
+
+img.is-missing { visibility: hidden; }
+
+/* Photo posee en fond d un bloc decoratif (carte flottante, image de la
+   FAQ, bandeau du pied de page, restaurant). Elle passe sous les voiles
+   et les textes du bloc, qui gardent leur ordre d empilement. */
+.media-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.footer__cta-block,
+.float-card,
+.faq__image,
+.resto__media {
+  isolation: isolate;
+  overflow: hidden;
+}
+.resto__media { position: relative; }
+
+/* Photo du hero en portrait : on garde la mer, au bout du chemin. */
+.hero__img-wrap img { object-position: 50% 80%; }
+
+/* Bandeau du pied de page : le sable et la mer plutot que le ciel. */
+.footer__cta-block .media-fill { object-position: 50% 80%; }
+
+/* ── Barre de navigation ─────────────────────────────
+   Les liens sont repartis de part et d autre du nom : chaque groupe reste
+   colle a son bord (le margin auto d origine centrait la liste). */
+.nav__side .nav__links { margin-inline: 0; }
+
+/* Tiroir mobile replie : son filet superieur restait visible et barrait
+   la photo du hero d un trait clair. */
+.nav__drawer:not(.is-open) { border-top-color: transparent; }
+
+/* ── Photos absentes : cases et vignettes ────────── */
+.room__main.is-empty .room__zoom { display: none; }
+.room__main.is-empty .room__main-btn,
+.galerie__btn.is-empty { cursor: default; }
+
+/* Une vignette ou une case de galerie sans photo est retiree plutot
+   qu affichee vide. */
+.room__thumbs li:has(.is-empty),
+.galerie__item:has(.is-empty) { display: none; }
+
+/* ── Avis des voyageurs ──────────────────────────── */
+.reputation__quotes {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 14px;
+}
+.reputation__quote {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-line);
+  border-radius: var(--r-card);
+  padding: clamp(18px, 2.2vw, 26px);
+}
+.reputation__quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 1.8vw, 21px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--c-ink);
+}
+.reputation__quote-author {
+  margin-top: auto;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+/* ── Fiche d un hebergement : petit-dejeuner ──────── */
+.room__note {
+  margin: -10px 0 22px;
+  font-size: 13px;
+  color: var(--c-muted);
+}
+
+/* ── Acces : reseaux sociaux et carte ────────────── */
+.acces__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.acces__links:empty { display: none; }
+
+/* Coordonnee cliquable dans l encart sombre de la reservation */
+a.booking__info-value:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Cibles tactiles ─────────────────────────────────
+   Au doigt, tout ce qui se clique fait au moins 44 px. Certaines regles
+   de components.css sont ecrasees par sections.css, charge apres elles :
+   on les reaffirme ici, en dernier. */
+@media (hover: none), (max-width: 899px) {
+  .btn                 { min-height: 44px; justify-content: center; }
+  .trusted__card-btn   { width: 44px; height: 44px; }
+  .pagehead__jump-item { min-height: 44px; }
+  .nav__brand          { min-height: 44px; justify-content: center; }
+  .skip-link           { min-height: 44px; display: flex; align-items: center; }
+
+  /* Coordonnees cliquables : la zone grandit, pas la ligne. */
+  .footer__address a,
+  .footer__social a    { min-height: 44px; display: flex; align-items: center; }
+  .footer__address a   { margin-block: -8px; }
+  a.booking__info-value,
+  .acces__row-value a  { display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
+}
+
+/* ── Sans JavaScript, ou sans GSAP ───────────────── */
+/* Le nom geant du pied de page attend d etre revele par GSAP : sans lui,
+   il resterait cache sous son masque. */
+html:not(.js) .footer__wordmark,
+.no-gsap .footer__wordmark { transform: none; }
+
+/* ── Mouvement reduit ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
